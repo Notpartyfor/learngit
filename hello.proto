@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package go.micro.srv.hello;
+
+// 定义 RPC 服务
+service Say {
+    // 定义 RPC 服务接口
+    rpc Hello(Request) returns (Response) {}
+    rpc Hello2(Request2) returns (Response) {}
+}
+
+// 定义 Hello 接口请求
+message Request {
+    string name         = 1;
+    repeated int64 ids  = 2;
+    Job job             = 3;
+    User user           = 4;
+    repeated User users = 5;
+}
+message Request2 {
+    string name         = 1;
+    int32 age           = 2;
+}
+
+message User {
+    string name = 1;
+    string addr = 2;
+//    Job job = 3 ;
+    repeated Job jobs = 3 ;
+}
+
+message Job {
+    string name = 1;
+    double salary = 2;
+}
+
+// 定义 Hello 接口响应
+message Response {
+    string msg = 1;
+}
